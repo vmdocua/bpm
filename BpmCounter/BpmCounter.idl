@@ -1,0 +1,56 @@
+// BpmCounter.idl : IDL source for BpmCounter
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (BpmCounter.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(4F26C12E-4B11-4EC2-A940-286150CD09C4),
+	dual,
+	nonextensible,
+	helpstring("IBpmCounterCtl Interface"),
+	pointer_default(unique)
+]
+interface IBpmCounterCtl : IDispatch{
+	[id(1), helpstring("method ClearHistory")] HRESULT ClearHistory(void);
+	[propget, id(2), helpstring("property ShowHistoryPanel")] HRESULT ShowHistoryPanel([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(2), helpstring("property ShowHistoryPanel")] HRESULT ShowHistoryPanel([in] VARIANT_BOOL newVal);
+	[id(3), helpstring("method About")] HRESULT About(void);
+	[id(4), helpstring("method ResetAll")] HRESULT ResetAll(void);
+	[id(5), helpstring("method Reset")] HRESULT Reset(void);
+	[id(6), helpstring("method Beat")] HRESULT Beat(void);
+	[id(7), helpstring("method KeyBeat")] HRESULT KeyBeat(void);
+};
+
+[
+	uuid(384D3DF5-E549-4CB8-9E2C-78E755E8D929),
+	version(1.0),
+	helpstring("BpmCounter 1.0 Type Library")
+]
+library BpmCounterLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(8FED0232-10A9-4CE4-B321-CCCA8EB67178),
+		helpstring("_IBpmCounterCtlEvents Interface")
+	]
+	dispinterface _IBpmCounterCtlEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(9F030198-9A1A-4458-A437-CC0F61E34313),
+		helpstring("BpmCounterCtl Class")
+	]
+	coclass BpmCounterCtl
+	{
+		[default] interface IBpmCounterCtl;
+		[default, source] dispinterface _IBpmCounterCtlEvents;
+	};
+};

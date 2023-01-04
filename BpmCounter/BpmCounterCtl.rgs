@@ -1,0 +1,36 @@
+HKCR
+{
+	BpmCounter.BpmCounterCtl.1 = s 'BpmCounterCtl Class'
+	{
+		CLSID = s '{9F030198-9A1A-4458-A437-CC0F61E34313}'
+		'Insertable'
+	}
+	BpmCounter.BpmCounterCtl = s 'BpmCounterCtl Class'
+	{
+		CLSID = s '{9F030198-9A1A-4458-A437-CC0F61E34313}'
+		CurVer = s 'BpmCounter.BpmCounterCtl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {9F030198-9A1A-4458-A437-CC0F61E34313} = s 'BpmCounterCtl Class'
+		{
+			ProgID = s 'BpmCounter.BpmCounterCtl.1'
+			VersionIndependentProgID = s 'BpmCounter.BpmCounterCtl'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{384D3DF5-E549-4CB8-9E2C-78E755E8D929}'
+			'Version' = s '1.0'
+		}
+	}
+}
